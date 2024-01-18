@@ -7,16 +7,19 @@ from lexererr import *
 options {
 	language=Python3;
 }
-// Use ANTLR to write regular expressions describing a Pascal identifier 
-// that must begin with a lowercase letter (’a’ to ’z’),
-//  but may continue with many characters
-//  which are lowercase letter or digit (’0’ to ’9’).
+// Use ANTLR to write regular expressions describing Pascal 
+// tokens For a number to be taken as "real" (or "floating point") format,
+//  it must either have a decimal point, or use scientific notation.
+//  For example, 1.0, 1e-12, 1.0e-12, 0.000000001 are all valid reals.
+//  At least one digit must exist on either side of a decimal point.
 
 
 program: EOF;
 
-Iden: [a-z][a-z0-9]*;
-
+REAL: (INT DECIMAL) | (INT DECIMAL? EXP);
+fragment INT: [0-9]+;
+fragment DECIMAL: '.'[0-9]+;
+fragment EXP: 'e''-'?[0-9]+;
 
 WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
 
