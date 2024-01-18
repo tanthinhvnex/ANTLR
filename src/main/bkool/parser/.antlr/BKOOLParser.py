@@ -26,7 +26,7 @@ class BKOOLParser ( Parser ):
 
     literalNames = [  ]
 
-    symbolicNames = [ "<INVALID>", "INT", "WS", "ERROR_CHAR", "UNCLOSE_STRING", 
+    symbolicNames = [ "<INVALID>", "Iden", "WS", "ERROR_CHAR", "UNCLOSE_STRING", 
                       "ILLEGAL_ESCAPE" ]
 
     RULE_program = 0
@@ -34,7 +34,7 @@ class BKOOLParser ( Parser ):
     ruleNames =  [ "program" ]
 
     EOF = Token.EOF
-    INT=1
+    Iden=1
     WS=2
     ERROR_CHAR=3
     UNCLOSE_STRING=4

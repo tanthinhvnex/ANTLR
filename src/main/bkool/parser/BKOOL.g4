@@ -7,14 +7,15 @@ from lexererr import *
 options {
 	language=Python3;
 }
-// Use ANTLR to write regular expressions describing 
-// Pascal strings are made up of a sequence of characters between single quotes: 'string'. 
-// The single quote itself can appear as two single quotes back to back in a string: 'isn''t'.
+// Use ANTLR to write regular expressions describing a Pascal identifier 
+// that must begin with a lowercase letter (’a’ to ’z’),
+//  but may continue with many characters
+//  which are lowercase letter or digit (’0’ to ’9’).
 
 
 program: EOF;
 
-INT: '0' | [1-9][_0-9]*('_'[0-9]+)* {self.text = self.text.replace('_','')};
+Iden: [a-z][a-z0-9]*;
 
 
 WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
